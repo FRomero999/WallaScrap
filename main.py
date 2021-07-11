@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+import requests
 import json
 from requests.structures import CaseInsensitiveDict
 from pyjsonq import JsonQ
@@ -51,4 +52,4 @@ def hello_world():
 
 
 port = int(os.environ.get('PORT', 5000))
-app.run(host='0.0.0.0', port=port)
+server=app.run(host='0.0.0.0', port=port)
