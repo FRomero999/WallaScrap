@@ -1,1 +1,1 @@
-web: gunicorn main:server --workers 4
+web: gunicorn main:server --preload --workers 4
