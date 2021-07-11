@@ -50,4 +50,4 @@ def hello_world():
     return render_template('index.html', data=salida)
 
 
-app.run("localhost",5000)
+app.run()
