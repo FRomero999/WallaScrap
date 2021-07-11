@@ -8,14 +8,14 @@
 </head>
 <body>
 
-    <h1>WallaScrap</h1>
+    <h1 style="text-align:center;">WallaScrap</h1>
 
-    <div class="d-flex m-4" style="flex-direction: row;flex-wrap: wrap;">
+    <div class="d-flex m-4" style="flex-direction: row;flex-wrap: wrap;justify-content: center;">
         {% for p in data %}
         <div class="card m-1" style="width:18rem;">
           <img src="{{p.images[0].xsmall}}" class="card-img-top" alt="..." style="height:300px">
           <div class="card-body">
-            <a href="https://es.wallapop.com/item/{{p.web_slug}}">
+            <a href="https://es.wallapop.com/item/{{p.web_slug}}" target="_blank">
                 <h5 class="card-title">{{p.title}}<br><span class="badge bg-secondary">{{p.price}}</span></h5>
             </a>
             <p class="card-text" style="font-size:75%"  >{{p.description|truncate(300, True, '...')}}</p>
