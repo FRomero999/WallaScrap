@@ -1,7 +1,8 @@
-from flask import Flask
+from flask import Flask, render_template
 import requests
 import json
 from requests.structures import CaseInsensitiveDict
+from pyjsonq import JsonQ
 
 app = Flask(__name__)
 
@@ -40,7 +41,13 @@ def hello_world():
             if productos<30:
                 break
 
-    return(json.dumps(resultados))
+
+    q=JsonQ(data=resultados)
+    salida=q.sort_by('price').get()
+
+    print(salida)
+
+    return render_template('index.html', data=salida)
 
 
 app.run("localhost",5000)
