@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <title>WallaScrap</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <style>img{  object-fit: cover; }</style>
+    <style>
+        img{  object-fit: cover; }
+        .card:hover .card-img-overlay{ opacity:1 !important; }
+        .card-img-overlay{opacity:0;background-color: rgb(255 255 255 / 70%);transition: opacity 0.25s linear;}
+    </style>
 </head>
 <body>
 
@@ -13,11 +17,14 @@
         {% for p in data %}
         <div class="card m-1" style="width:18rem;">
           <img src="{{p.images[0].xsmall}}" class="card-img-top" alt="..." style="height:300px">
-          <div class="card-body">
-            <a href="https://es.wallapop.com/item/{{p.web_slug}}" target="_blank">
-                <h5 class="card-title">{{p.title}}<br><span class="badge bg-secondary">{{p.price}}</span></h5>
-            </a>
-            <p class="card-text" style="font-size:75%"  >{{p.description|truncate(300, True, '...')}}</p>
+          <div class="card-img-overlay" style="">
+              <div class="card-body">
+                <a href="https://es.wallapop.com/item/{{p.web_slug}}" target="_blank">
+                    <h5 class="card-title">{{p.title}}</h5>
+                </a>
+                <p class="card-text" style="font-size:75%"  >{{p.description|truncate(300, True, '...')}}</p>
+                <p><span class="badge bg-secondary fs-4">{{p.price}}€</span></p>
+              </div>
           </div>
         </div>
         {% endfor %}

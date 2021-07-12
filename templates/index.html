@@ -14,12 +14,17 @@
 
     <nav class="navbar navbar-light bg-light sticky-top">
         <div class="container-fluid">
-            <a class="navbar-brand" data-bs-target="#offcanvasTop" data-bs-toggle="offcanvas" href="#">WallaScrap</a>
-              <div class="navbar-text">
-                {% for k in keywords %}
-                  <span class="badge bg-secondary">{{k}}</span>
-                {% endfor %}
-              </div>
+            <a class="navbar-brand" href="#">WallaScrap</a>
+
+              <form id="keys" class="d-flex">
+                  <div class="spinner-grow" role="status" style="display:none;">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                <input data-role="tagsinput" id="keywords" aria-label="Palabra clave" class="form-control"
+                       placeholder="Palabra clave" name="keyword" type="text" value="{{listado}}">
+                <button class="btn btn-outline-success mx-2" type="submit">buscar</button>
+
+              </form>
         </div>
 
     </nav>
@@ -55,12 +60,18 @@
         });
 
         $('#keywords').on('itemAdded', function(event) {
-            $.post( "/", $( "#keys" ).serialize() );
-            $("#contenido").load("/results");
+            $(".spinner-grow").show();
+            $.post( "/", $( "#keys" ).serialize(), function(data){
+                $("#contenido").load("/results");
+                $(".spinner-grow").hide();
+            });
         });
         $('#keywords').on('itemRemoved', function(event) {
-            $.post( "/", $( "#keys" ).serialize() );
-            $("#contenido").load("/results");
+            $(".spinner-grow").show();
+            $.post( "/", $( "#keys" ).serialize(), function(data){
+                $("#contenido").load("/results");
+                $(".spinner-grow").hide();
+            });
         });
 
         $("#contenido").load("/results");

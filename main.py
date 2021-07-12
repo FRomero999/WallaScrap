@@ -45,6 +45,8 @@ def results():
 
     for keyword in keywords:
         print(keyword)
+        if keyword=='':
+            break
         for page in range(0,max_page):
             url = "https://api.wallapop.com/api/v3/general/search?country_code=ES&density_type=20&filters_source=search_box&keywords="
             url = url + keyword +"&language=es_ES&latitude=36.71847&longitude=-4.41965&order=closest&search_id=a5e5f67b-a5c3-4f0d-ab94-d7203d7f09fd&start="
@@ -70,4 +72,4 @@ def results():
 
 
 port = int(os.environ.get('PORT', 5000))
-server=app.run(host="0.0.0.0", port=port)
+server=app.run(host="localhost", port=port)
