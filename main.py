@@ -72,4 +72,4 @@ def results():
 
 
 port = int(os.environ.get('PORT', 5000))
-server=app.run(host="localhost", port=port)
+server=app.run(host="0.0.0.0", port=port)
